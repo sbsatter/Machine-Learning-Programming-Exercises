@@ -64,11 +64,16 @@ J = J + lambda/(2*m)*regularized_cost;
 %               over the training examples if you are implementing it for the
 %               first time.
 %
-d3 = y_i - a3;
-d2 = (d3 * Theta2).*sigmoidGradient(a2);
-d2 = d2(:, 2:end);
-D2 = a2' * d3;
-D1 = a1' * d2;
+d3 = a3 - y_i;
+d2 = (d3 * Theta2);
+% size(Theta2), size(y_i),
+% size(z2)
+t = sigmoidGradient(z2);
+% size(t)
+d2 = d2(:, 2:end).*t;
+% size(d2)
+D2 = d3' * a2;
+D1 = d2' * a1;
 Theta1_grad = D1/m;
 Theta2_grad = D2/m;
 % Part 3: Implement regularization with the cost function and gradients.
@@ -78,7 +83,12 @@ Theta2_grad = D2/m;
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
-
+Theta1(:,1) = 0;
+Theta2(:,1) = 0;
+regularization_theta1 = lambda/m * Theta1;
+regularization_theta2 = lambda/m * Theta2;
+Theta1_grad = Theta1_grad + regularization_theta1;
+Theta2_grad = Theta2_grad + regularization_theta2;
 
 
 
