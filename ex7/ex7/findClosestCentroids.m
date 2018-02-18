@@ -18,17 +18,11 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-m = size(X,1);
 cost = [];
 for j=1:K
     cost = [cost sqrt(sum((X - centroids(j,:)).^2, 2))];
 endfor
 [minv idx] = min(cost, [], 2);
-
-
-
-
-
 
 
 % =============================================================
