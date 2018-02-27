@@ -47,8 +47,8 @@ Theta_grad = (prod' * X);
 X_grad = (prod * Theta);
 
 J = J + lambda/2 * (sum(sum(Theta.^2)) + sum(sum(X.^2)));
-Theta_grad = Theta_grad + lambda * Theta_grad;
-X_grad = X_grad + lambda * X_grad;
+Theta_grad = Theta_grad + lambda * Theta;
+X_grad = X_grad + lambda * X;
 
 
 
